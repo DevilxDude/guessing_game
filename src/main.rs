@@ -2,8 +2,17 @@ use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
 
+fn pause(message: &str) {
+    println!("{message}");
+    io::stdin()
+        .read_line(&mut String::new())
+        .expect("Unable to use input!");
+}
+
 fn main() {
-    println!("Guest the number!");
+    pause("Press Enter when you are ready to play a game.");
+
+    println!("Guest the number! (1-100)");
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
@@ -35,4 +44,6 @@ fn main() {
             }
         }
     }
+
+    pause("Press Enter To exit.");
 }
